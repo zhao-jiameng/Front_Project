@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript</title>
+<script>
+    //函数
+    function add(a,b){
+        return a+b;
+    }
+    console.log(add(1,2));
+
+    var add2 = function(a,b){
+        return a+b;
+    }
+    console.log(add2(1,2));
+
+    var add3 = new Function("a","b","return a+b");
+    console.log(add3(1,2));
+
+    var add4 = (a,b)=>a+b;
+    console.log(add4(1,2));
+
+    //函数的调用
+    function test(){
+        console.log("test");
+    }
+    test();
+
+    function test2(){
+        console.log("test2");
+        return;
+    }
+    test2();
+
+    function test3(){
+        console.log("test3");
+        return 1;
+    }
+    test3();
+
+    function test4(){
+        console.log("test4");
+        return 1,2;
+    }
+    console.log(test4());
+
+    function test5(){
+        console.log("test5");
+        return 1+2;
+    }
+    console.log(test5());
+
+    function test6(){
+        console.log("test6");
+        return 1,2+3;       //只返回最后一个值
+    }
+    console.log(test6());
+
+    function test7(){
+        console.log("test7");
+        return [1,2+3,4];     
+    }
+    console.log(test7());
+
+    //arguments
+    function fn(){
+        console.log(arguments)  //里面存储所有传递过来的实参
+    }
+    fn(1,2,3);
+</script>
+</head>
+<body>
+
+</body>
+</html>

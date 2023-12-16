@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        //包装类型静态方法扩展（只能通过包装类型调用，不能用实例对象调用）
+        TODO://Number
+        //Number.parseInt()用来将一个字符串转换为整数
+        console.log(Number.parseInt('12.34love'));
+        //Number.parseFloat()用来将一个字符串转换为浮点数
+        console.log(Number.parseFloat('123.45love'));
+        //Number.EPSILON用来表示1与大于1的最小浮点数之间的差（计算误差）
+        console.log(0.1+0.2===0.3);
+        console.log(Math.abs(0.1+0.2-0.3)<Number.EPSILON);
+
+        function equal(a,b){
+            return Math.abs(a-b)<Number.EPSILON;
+        }
+        console.log(equal(0.1+0.2,0.3));
+
+        //Number.isFinite()用来检查一个数值是否为有限的
+        console.log(Number.isFinite(15));
+        console.log(Number.isFinite(0.8));
+        console.log(Number.isFinite(NaN));
+        console.log(Number.isFinite(Infinity));
+
+        //Number.isNaN()用来检查一个值是否为NaN
+        console.log(Number.isNaN(NaN));
+        console.log(Number.isNaN(15));
+        console.log(Number.isNaN('15'));
+        console.log(Number.isNaN(true));
+        console.log(Number.isNaN(9/NaN));
+        console.log(Number.isNaN('true'/0));
+        console.log(Number.isNaN('true'/'true'));
+
+        //Number.isInteger()用来判断一个数值是否为整数
+        console.log(Number.isSafeInteger(9007199254740992));
+
+        //Number.isSafeInteger()用来判断一个整数是否在安全范围内
+        console.log(Number.isSafeInteger(9007199254740992));
+        //Number.MAX_SAFE_INTEGER用来表示整数的最大安全值
+        console.log(Number.MAX_SAFE_INTEGER);
+        //Number.MIN_SAFE_INTEGER用来表示整数的最小安全值
+        console.log(Number.MIN_SAFE_INTEGER);
+
+        //Math.trunc()用于去除一个数的小数部分，返回整数部分
+        console.log(Math.trunc(4.1));
+
+        //Math.sign()用来判断一个数到底是正数、负数、还是零
+        console.log(Math.sign(-5));
+        console.log(Math.sign(0));
+        console.log(Math.sign(5));
+        console.log(Math.sign('50'));
+        console.log(Math.sign('foo'));
+
+        //Math.cbrt()用于计算一个数的立方根
+        console.log(Math.cbrt(-1));
+        console.log(Math.cbrt(0));
+        console.log(Math.cbrt(1));
+        console.log(Math.cbrt(2));
+
+        //二进制和八进制表示法
+        console.log(0b111110111===503);
+        console.log(0o767===503);
+        console.log(503===503);
+        console.log(0xff===255);
+
+        console.log(Number('0b111'));
+        console.log(Number('0o10'));
+        console.log(Number('0xff'));
+
+        //toFixed() 设置保留几位小数（四舍五入）
+
+
+
+
+
+
+        TODO://对象方法扩展
+        //Object.is()用来比较两个值是否严格相等
+        console.log(Object.is('foo','foo'));
+        console.log(Object.is({},{}));
+        console.log(Object.is(+0,-0));
+        console.log(Object.is(NaN,NaN));
+
+        //Object.assign()用于对象的合并，将源对象的所有可枚举属性，复制到目标对象
+        const target={a:1};
+        const source1={b:2};
+        const source2={c:3};
+        Object.assign(target,source1,source2);
+        console.log(target);
+
+        //Object.assign()实行的是浅拷贝，而不是深拷贝
+        const obj2={a:{b:1}};
+        const obj3=Object.assign({},obj2);
+        obj2.a.b=2;
+        console.log(obj3.a.b);
+
+
+        //配置项合并
+        const merge=(target,...sources)=>Object.assign(target,...sources);
+
+        const DEFAULTS={
+            logLevel:0,
+            outputFormat:'html',
+            url:'http://example.com'
+        };
+        const DEFAULTS1={
+            logLevel:1,
+            outputFormat:'css',
+        };
+        console.log(Object.assign(DEFAULTS,DEFAULTS1));
+        console.log(merge(DEFAULTS,DEFAULTS1));
+
+
+
+        //Object.getOwnPropertyDescriptors()返回指定对象所有自身属性（非继承属性）的描述对象
+        //Object.keys()返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名
+        //Object.values()返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值
+        const obj={
+            foo:123,
+            get bar(){return 'abc'}
+        };
+        console.log(Object.getOwnPropertyDescriptors(obj));
+        console.log(Object.keys(obj));
+        console.log(Object.values(obj));
+
+
+        //Object.entries()返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组
+        const obj4={foo:'bar',baz:42};
+        console.log(Object.entries(obj4));
+        const m=new Map(Object.entries(obj4));
+        console.log(m);
+        console.log(m.get('foo'));
+
+
+        //Object.fromEntries()方法是Object.entries()的逆操作，用于将一个键值对数组转为对象
+        const map=new Map().set('foo',true).set('bar',false);
+        console.log(Object.fromEntries(map));
+        const obj5={foo:true,bar:false};
+        console.log(Object.fromEntries(Object.entries(obj5)));
+        
+
+
+        //Object.setPrototypeOf()用来设置一个对象的prototype对象，返回参数对象本身
+        //Object.getPrototypeOf()用于读取一个对象的原型对象
+        const proto={
+            foo:'hello'
+        };
+        const obj1={
+            foo:'world',
+            find(){
+                return super.foo;
+            }
+        };
+        Object.setPrototypeOf(obj1,proto);
+        console.log(obj1.find());
+
+
+
+        TODO://数组扩展
+        const arr=[1,5,8,10]
+        //Array.forEach 遍历数组
+        //Array.filter 过滤数组
+        //Array.map 迭代数组
+
+        //Array.reduce 累计器(function(上一次值，当前值){},初始值)
+        const total=arr.reduce(function(prev,current){return prev+current})
+        console.log(total)
+        const total1=arr.reduce((prev,current)=>prev+current,10)
+        console.log(total1)
+
+        
+        //Array.find 查找
+        const arr1=[
+            {
+                name:'小米',
+                price:3999
+            },
+            {
+                name:'华为',
+                price:5999  
+            }
+        ]
+        const mi=arr1.find(function(item){
+            return item.name === '小米'
+        })
+        console.log(mi)
+        const hua=arr1.find(item=>item.name ==='华为')
+        console.log(hua)
+
+        //Array.every 判断是否都符合条件
+        //Array.some  判断是否有一个符合条件
+        arr.every(item=>item>10)
+        arr.some(item=>item>10)
+
+        //Array.includes 判断包含
+        console.log([1,2,3].includes(4)); 
+        console.log([1,2,NaN].includes(NaN));
+        
+
+        TODO://字符串扩展
+        //split 分割（将字符串转换为数组）
+
+        //subString 字符串截取（左包右闭）
+
+        //startWith 检测是否以某字符开头
+        const str='To be, or not to be, that is the question.'
+        console.log(str.startsWith('TO be'));  //true
+        console.log(str.startsWith('not to be'));  //false
+        console.log(str.startsWith('not to be',10));  //true
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

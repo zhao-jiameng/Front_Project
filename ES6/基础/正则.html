@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        let str='<a href="https://www.baidu.com">百度</a>'
+        let reg=/<a href="(.*")>(.*)<\/a>/;
+        let result=reg.exec(str)
+        console.log(result)
+        console.log(result[0])
+        console.log(result[1])
+        console.log(result[2])
+
+        //命名捕获分组
+        let str1='<a href="https://www.baidu.com">百度</a>'
+        let reg1=/<a href="(?<url>.*")>(?<text>.*)<\/a>/;
+        let result1=reg1.exec(str1)
+        console.log(result1)
+        console.log(result1.groups.url)
+        console.log(result1.groups.text)
+
+
+        //正向断言（根据后面的内容来匹配前面的内容）
+        let str2='JS21443241234234你知道吗6666略略略'
+        let reg2=/\d+(?=略)/g;
+        let result2=reg2.exec(str2)
+        console.log(result2)
+        //反向断言（根据前面的内容来匹配后面的内容）
+        let str3='JS21443241234234你知道吗6666略略略'
+        let reg3=/(?<=吗)\d+/g;
+        let result3=reg3.exec(str3)
+        console.log(result3)
+
+        //负向断言（根据后面的内容来匹配前面的内容）
+        let str4='JS21443241234234你知道吗6666略略略'
+        let reg4=/\d+(?!你)/g;
+        let result4=reg4.exec(str4)
+        console.log(result4)
+
+        //dotAll模式（.可以匹配任意字符，但是不能匹配换行符）
+        //g模式下，.不能匹配换行符
+        //s模式下，.可以匹配换行符
+        //dotAll模式下，.可以匹配任意字符，包括换行符
+        let str5=`
+            <ul>
+                <li>
+                    <a>山西工程</a>
+                    <p>yyds</p>    
+                </li>
+                <li>
+                    <a>山西职院</a>
+                    <p>ayok</p>
+            </ul>
+        `
+        let reg5=/<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/sg;
+        // let result5=reg5.exec(str5)
+        // console.log(result5)
+        let result5;
+        let data=[]
+        while(result5=reg5.exec(str5)){
+            data.push({
+                school:result5[1],
+                desc:result5[2]
+            })
+        }
+        console.log(data)
+
+        //matchAll
+        let str6=`
+            <ul>
+                <li>
+                    <a>山西工程</a>
+                    <p>yyds</p>    
+                </li>
+                <li>
+                    <a>山西职院</a>
+                    <p>ayok</p>
+            </ul>
+        `
+        let reg6=/<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/sg;
+        let result6=str6.matchAll(reg6)
+        console.log(result6)
+        for(let i of result6){
+            console.log(i)
+        }
+
+        let arr=[...result6]
+        console.log(arr)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

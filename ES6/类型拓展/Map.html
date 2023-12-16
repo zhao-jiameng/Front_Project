@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        //声明一个map对象
+        //map对象的值是唯一的
+        //map对象的值可以是任意类型的值
+        let m=new Map();
+
+        //map对象的set方法用于向map对象中添加值
+        //map对象的set方法返回一个map对象
+        m.set('name','张三');
+        m.set('age',18);
+
+        console.log(m);
+
+        //map对象的size属性用于获取map对象的值的个数
+        console.log(m.size);
+
+        //map对象的get方法用于获取map对象中的值
+        //map对象的get方法返回一个map对象中的值
+        console.log(m.get('name'));
+
+        //map对象的delete方法用于删除map对象中的值
+        //map对象的delete方法返回一个布尔值
+        //map对象的delete方法只能删除map对象中的值
+        //map对象的delete方法不能删除map对象中的属性
+        console.log(m.delete('name'));
+        console.log(m);
+
+        //map对象的has方法用于判断map对象中是否存在指定的值
+        //map对象的has方法返回一个布尔值
+        console.log(m.has('name'));
+
+        //map对象的clear方法用于清空map对象中的值
+        //map对象的clear方法返回一个undefined
+        m.clear();
+        console.log(m);
+
+        //map对象的forEach方法用于遍历map对象中的值
+        //map对象的forEach方法返回一个undefined
+        //map对象的forEach方法的回调函数有三个参数
+        //第一个参数表示map对象中的值
+        //第二个参数表示map对象中的值
+        //第三个参数表示map对象本身
+        let m1=new Map();
+        m1.set('name','张三');
+        m1.set('age',18);
+
+        m1.forEach((value,key,map)=>{
+            console.log(value);
+            console.log(key);
+            console.log(map);
+        });
+
+        //map对象的entries方法用于遍历map对象中的值
+        //map对象的entries方法返回一个迭代器对象
+        //map对象的entries方法的迭代器对象的next方法返回一个对象
+        //map对象的entries方法的迭代器对象的next方法的对象的value属性表示map对象中的值
+        //map对象的entries方法的迭代器对象的next方法的对象的done属性表示map对象中的值是否遍历完成
+        let m2=new Map();
+        m2.set('name','张三');
+        m2.set('age',18);
+
+        let iterator=m2.entries();
+        console.log(iterator.next());
+        console.log(iterator.next());
+
+        //map对象的keys方法用于遍历map对象中的键
+        //map对象的keys方法返回一个迭代器对象
+        //map对象的keys方法的迭代器对象的next方法返回一个对象
+        //map对象的keys方法的迭代器对象的next方法的对象的value属性表示map对象中的键
+        //map对象的keys方法的迭代器对象的next方法的对象的done属性表示map对象中的键是否遍历完成
+        let m3=new Map();
+        m3.set('name','张三');
+        m3.set('age',18);
+
+        let iterator1=m3.keys();
+        console.log(iterator1.next());
+        console.log(iterator1.next());
+
+        //map对象的values方法用于遍历map对象中的值
+        //map对象的values方法返回一个迭代器对象
+        //map对象的values方法的迭代器对象的next方法返回一个对象
+        //map对象的values方法的迭代器对象的next方法的对象的value属性表示map对象中的值
+        //map对象的values方法的迭代器对象的next方法的对象的done属性表示map对象中的值是否遍历完成
+        let m4=new Map();
+
+        m4.set('name','张三');
+        m4.set('age',18);
+
+        let iterator2=m4.values();
+        console.log(iterator2.next());
+        console.log(iterator2.next());
+
+        //map对象的Symbol.iterator属性用于遍历map对象中的值
+        //map对象的Symbol.iterator属性返回一个迭代器对象
+        //map对象的Symbol.iterator属性的迭代器对象的next方法返回一个对象
+        //map对象的Symbol.iterator属性的迭代器对象的next方法的对象的value属性表示map对象中的值
+        //map对象的Symbol.iterator属性的迭代器对象的next方法的对象的done属性表示map对象中的值是否遍历完成
+        let m5=new Map();
+
+        m5.set('name','张三');
+        m5.set('age',18);
+
+        let iterator3=m5[Symbol.iterator]();
+        console.log(iterator3.next());
+        console.log(iterator3.next());
+
+        //map对象的for...of循环用于遍历map对象中的值
+        //map对象的for...of循环的返回值是map对象中的值
+        let m6=new Map();
+
+        m6.set('name','张三');
+        m6.set('age',18);
+
+        for(let value of m6){
+            console.log(value);
+        }
+
+        
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

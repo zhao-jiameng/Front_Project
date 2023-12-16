@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        TODO: //生成器（异步编程）
+        function * gen(){
+            console.log('000'); 
+            yield 1;    //函数代码分隔符
+            console.log('111');
+            yield 2;    //返回结果
+            console.log('222');
+            yield 3;
+            console.log('333');
+            yield 4;
+            console.log('444');
+            yield 5;
+            console.log('555');
+        }
+
+        let it=gen();
+
+        console.log(it.next());
+        console.log(it.next());
+        console.log(it.next());
+        console.log(it.next());
+        console.log(it.next());
+        console.log(it.next());
+
+        // for(let v of gen()){
+        //     console.log(v);
+        // }
+
+        TODO: 生成器函数参数
+        function * gen2(a,b){
+            console.log(a);
+            console.log(b);
+            let c=a+b;
+            let one=yield c;
+            let d=a*b;
+            yield d;
+            let e=a/b;
+            yield e;
+        }
+
+        let it2=gen2(10,20);
+        console.log(it2.next('one'));
+        console.log(it2.next());
+        console.log(it2.next());
+        console.log(it2.next());
+
+        TODO: 获取用户案例(回调地狱)
+        function getUsers(){
+            setTimeout(()=>{
+                let data='用户数据';
+                iterator.next(data) //异步操作完毕后，执行下一步操作，传入数据，作为yield的返回值
+                re
+            },1000);
+        }
+        function getOrders(){
+            setTimeout(()=>{
+                let data='订单数据';
+                iterator.next(data)
+            },2000);
+        }
+        function getGoods(){
+            setTimeout(()=>{
+                let data='商品数据';
+                iterator.next(data)
+            },3000);
+        }
+
+        function * gen3(){
+            let users=yield getUsers();
+            console.log(users);
+            let orders=yield getOrders();
+            console.log(orders);
+            let goods=yield getGoods();
+            console.log(goods);
+        }
+
+        let iterator=gen3();
+        iterator.next();
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

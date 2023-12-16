@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+    TODO://动态参数
+    function sum1(){
+        let sum = 0;
+        for(let i = 0;i<arguments.length;i++){
+            sum += arguments[i];
+        }
+        return sum;
+    }
+    console.log(sum1(1,2,3,4,5,6,7,8,9,10));
+
+    TODO://剩余参数(rest参数)
+    function sum2(a,b,...args){
+        let sum = a+b;
+        for(let i = 0;i<args.length;i++){
+            sum += args[i];
+        }
+        return sum;
+    }
+    console.log(sum2(1,2,3,4,5,6,7,8,9,10));
+
+    TODO://箭头函数
+    const fn = a => a+1;    //如果只有一个参数，可以省略小括号
+    console.log(fn(1));
+
+    let sum3 = (a,b) => a+b;    //如果只有一条语句，可以省略大括号 
+    console.log(sum3(1,2));
+
+    const fn1=(name)=> ({name:name});   //如果返回的是一个对象，需要用小括号包裹
+    console.log(fn1('张三'));
+
+    const getSum=(...arr)=>{    //没有arguments，只有剩余参数
+        let sum=0;
+        for(i of arr){
+            sum += i;
+        }
+        return sum;
+    }
+    console.log(getSum(1,2,3,4,5,6,7,8,9,10));
+
+    TODO://箭头函数的this指向（从自己的作用域链的上一层沿用）
+    let obj = {
+        name:'张三',
+        sayName(){
+            setTimeout(()=>{
+                console.log(this.name);
+            },1000);
+        }
+    }
+    obj.sayName();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

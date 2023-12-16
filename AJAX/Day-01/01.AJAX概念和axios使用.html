@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01.AJAX概念和axios使用</title>
+</head>
+
+<body>
+    <!-- 
+        axios库地址: https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js
+        省份数据地址: http://ajax-api.itheima.net/api/province
+    -->
+    <p class="my-p"></p>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        //实现浏览器和服务器之间通信，动态数据交互
+        axios({
+            url:'http://ajax-api.itheima.net/api/province'
+        }).then(result=>{
+            console.log(result);
+            console.log(result.data.data);
+            document.querySelector('.my-p').innerHTML=result.data.data.join('<br>')
+        })
+        
+    </script>
+</body>
+
+</html>

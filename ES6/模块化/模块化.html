@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script type="module">
+        // ES6模块化（防止命名冲突，提高代码复用，便于维护）
+        TODO:// 通用导入
+        console.log('通用导入');
+        import * as obj from './m1.js';
+        console.log(obj);
+        obj.default.change();
+
+        //结构赋值
+        import {a,fn,Person} from './m2.js';
+        console.log(a);
+        fn();
+        let p = new Person('张三');
+        p.showName();
+
+        //导入默认并重命名
+        import {default as fn} from './m3.js';
+        import fn from './m3.js';  //简便写法（针对默认暴露）
+
+        TODO://起别名
+        console.log('起别名');
+        // 导出时重命名
+        export {a as b};
+        // 导入时重命名
+        import {b as c} from './m1.js';
+        console.log(c);
+    </script>
+    <script src="./app.js" type="module"></script>
+</head>
+<body>
+    <button id="btn">按钮</button>
+</body>
+</html>

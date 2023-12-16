@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+</head>
+<body>
+    <p>123</p>
+    <script>
+        //throw
+        // function fn(x,y){
+        //     if(!x || !y){
+        //         throw new Error('没有参数传递')
+        //     }
+        //     return x+y
+        // }
+        // fn()
+
+        //try catch finally
+        function fn1(){
+            try{
+                debugger
+                // const p=document.querySelector('p')
+                const p=document.querySelector('.p')
+                p.style.color='red'
+            }catch(err){
+                console.log(err.message)
+                throw new Error('你看看，选择器错误了吧')
+            }finally{
+                console.log('保个底')
+            }
+            console.log("报错不执行");
+        }
+        fn1()
+    </script>
+</body>
+</html>

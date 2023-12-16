@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        //公共的属性写到构造函数里面
+        function Star(uname,age){
+            //构造函数的this就是实例对象
+            this.uname=uname
+            this.age=age
+        }
+        //公共的方法写到原型对象上（this指向实例对象）
+        Star.prototype.sing=function(){console.log('唱歌');}
+
+        console.dir(Star.prototype)
+
+        const ldh=new Star('刘德华',18)
+        const zxy=new Star('张学友',19)
+        console.log(ldh.sing === zxy.sing)
+
+        //自定义数组扩展方法
+        const arr=[1,2,3]
+        Array.prototype.max=function(){return Math.max(...this)}
+        console.log(arr.max)
+
+
+        //原型继承
+        function Preson(){
+            this.eys=2
+            this.head=1
+        }
+
+        function Women(){}
+        Women.prototype=new Preson()
+        Women.prototype.constructor=Women
+        Women.prototype.baby=function(){console.log('宝贝')}
+
+        const red=new Women()
+        console.log(red);
+
+        function Man(){}
+        Man.prototype=new Preson()
+        Man.prototype.constructor=Man
+
+        const had=new Man()
+        console.log(had);
+
+        //instanceof 检测构造函数的原型对象是否在某个对象的原型链上
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

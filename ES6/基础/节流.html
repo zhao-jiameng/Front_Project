@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <style>
+        .box{
+            margin: 30px;
+            width: 100px;
+            height: 100px;
+            font-size: 66px;
+            font-style: normal;
+            background-color: #b9b3b3;
+            box-shadow: 0px 0px 15px 15px #888888;
+            margin-left: 800px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="video">
+        <video src="http://v6.huanqiucdn.cn/4394989evodtranscq1500012236/85857ee03270835013741949711/v.f100830.mp4" controls></video>
+    </div>
+    
+    <script>
+        const box=document.querySelector('.box')
+        let i=1
+        function mouseMove(){
+            box.innerHTML=i++
+        }
+        //box.addEventListener('mousemove',mouseMove)
+
+        //利用lodash实现节流（500ms 执行第一次）
+        // box.addEventListener('mousemove',_.throttle(mouseMove,500))
+
+        //自定义实现节流
+        function throttle(fn,t){
+            let timer=null
+            return function(){
+                if(!timer){
+                    timer=setTimeout(function(){fn();timer=null},t)
+                } 
+            }
+        }
+        box.addEventListener('mousemove',throttle(mouseMove,3000))
+
+
+        //视频断点实现
+        const video=document.querySelector('video')
+        video.ontimeupdate=throttle(()=>{ //事件在当前播放位置改变时触发
+            //存储当前时间
+            localStorage.setItem('currentTime',video.currentTime)
+        },1000)
+        video.onloadeddata=()=>{video.currentTime=localStorage.getItem('currentTime') || 0}
+        //页面一打开触发
+    </script>
+</body>
+</html>

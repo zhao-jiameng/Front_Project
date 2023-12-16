@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        TODO://async
+        async function test(){
+            //return 'hello async'
+            //throw new Error('失败')
+            return new Promise((resole,reject)=>{
+                resole('hello async')
+                reject('失败')
+            })
+        }
+        const result=test()
+        console.log(result)
+
+        result.then((data)=>{
+            console.log(data)
+        },(err)=>{
+            console.log(err)
+        })
+
+        TODO://await
+        const p=new Promise((resolve,reject)=>{
+            //resolve('用户数据')
+            reject('失败')
+        })
+
+        async function getData(){
+            try{
+                let data=await p
+                console.log(data)
+            }catch(err){
+                console.log(err)
+            }
+        }
+        getData()
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript</title>
+<script>
+    //检测变量类型
+    var a = 1;
+    var b = "hello";
+    var c = true;
+    var d = null;
+    var e = undefined;
+    console.log(typeof a);
+    console.log(typeof b);
+    console.log(typeof c);
+    console.log(typeof d);
+    //字符串类型转换
+    console.log(a.toString());
+    console.log(String(a));
+    console.log(a+''); //隐式转换
+
+    //数字类型转换
+    var int='123';
+    var float='123.45';
+    console.log(parseInt(int));
+    console.log(parseInt(float));   //向下取整
+    console.log(parseInt('123abc'));   //只取数字部分
+    console.log(parseInt('abc123'));   //NaN
+
+    console.log(parseFloat(float)); //保留小数点后两位
+    console.log(parseFloat(int));   //整数不变
+
+    console.log(Number(int));   //转换为数字
+
+    console.log(int-0);    //隐式转换
+    console.log(int*1);
+    console.log(int-"120");
+
+    //简单加法计算器
+    alert("您的计算结果是："+(parseInt(prompt("请输入第一个数字"))+parseInt(prompt("请输入第二个数字"))));
+    
+    //布尔类型转换
+    console.log(Boolean(0));
+    console.log(Boolean(""));
+    console.log(Boolean(null));
+    console.log(Boolean(undefined));
+    console.log(Boolean(NaN));
+    console.log(Boolean(false));
+
+    console.log(Boolean(1));
+    console.log(Boolean("hello"));
+    console.log(Boolean({})); 
+
+    //比较运算符
+    console.log(1=='1');    //true
+    console.log(1==='1');   //false
+</script>
+</head>
+<body>
+
+</body>
+</html>

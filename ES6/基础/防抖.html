@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <style>
+        .box{
+            margin: 30px;
+            width: 800px;
+            height: 800px;
+            font-size: 66px;
+            font-style: normal;
+            background-color: #b9b3b3;
+            box-shadow: 0px 0px 15px 15px #888888;
+            margin-left: 800px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        const box=document.querySelector('.box')
+        let i=1
+        function mouseMove(){
+            box.innerHTML=i++
+        }
+        //box.addEventListener('mousemove',mouseMove)
+
+        //利用lodash实现防抖（500ms 执行最后一次）
+        // box.addEventListener('mousemove',_.debounse(mouseMove,500))
+
+        //自定义实现防抖
+        function debounce(fn,t){
+            let timer
+            return function(){
+                timer && clearTimeout(timer)
+                timer=setTimeout(function(){fn()},t)
+            }
+        }
+        box.addEventListener('mousemove',debounce(mouseMove,500))
+    </script>
+</body>
+</html>

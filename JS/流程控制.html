@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript</title>
+<script>
+    //分支结构
+    var age = prompt("请输入你的年龄");
+    if(age>=18){
+        alert("你已经成年了");
+    }else{
+        alert("你还未成年");
+    }
+    
+    var score = prompt("请输入你的成绩");
+    if(score>=90){
+        alert("优秀");
+    }else if(score>=80){
+        alert("良好");
+    }else if(score>=60){
+        alert("及格");
+    }else{
+        alert("不及格");
+    }
+    
+    var num = prompt("请输入一个数字");
+    switch(num){        //全等于
+        case "1":
+            alert("星期一");
+            break;
+        case "2":
+            alert("星期二");
+            break;
+        case "3":
+            alert("星期三");
+            break;
+        case "4":
+            alert("星期四");
+            break;
+        case "5":
+            alert("星期五");
+            break;
+        case "6":
+            alert("星期六");
+            break;
+        case "7":
+            alert("星期日");
+            break;
+        default:
+            alert("输入错误");
+    }
+
+    //三元运算符
+    var a = 1;
+    var b = 2;
+    var c = a>b?a:b;
+    console.log(c);
+    
+    //循环结构
+    var i = 1;
+    while(i<=10){
+        console.log(i);
+        i++;
+    }
+    
+    var j = 1;
+    do{
+        console.log(j);
+        j++;
+    }while(j<=10);
+    
+    for(var k=1;k<=10;k++){
+        console.log(k);
+    }
+    
+    var arr = [1,2,3,4,5,6,7,8,9,10];
+    for(var l=0;l<arr.length;l++){
+        console.log(arr[l]);
+    }
+    
+    var arr2 = [1,2,3,4,5,6,7,8,9,10];
+    for(var m in arr2){
+        console.log(arr2[m]);
+    }
+    
+    var arr3 = [1,2,3,4,5,6,7,8,9,10];
+    for(var n of arr3){
+        console.log(n);
+    }
+    
+    var arr4 = [1,2,3,4,5,6,7,8,9,10];
+    arr4.forEach(function(value,index,array){
+        console.log("value"+value);
+        console.log("index"+index);
+        console.log("array"+array);
+    });
+
+    
+
+    //跳转语句
+    for(var o=1;o<=10;o++){
+        if(o==5){
+            continue;
+        }
+        console.log(o);
+    }
+    
+    for(var p=1;p<=10;p++){
+        if(p==5){
+            break;
+        }
+        console.log(p);
+    }
+
+    //异常处理
+    try{
+        var q = 1;
+        var w = 0;
+        var e = q/w;
+        console.log(e);
+    }catch(err){
+        console.log(err);
+    }finally{
+        console.log("finally");
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>

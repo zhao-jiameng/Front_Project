@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+
+h2 {
+	color: aqua;
+	text-align: center;
+}
+li {
+	color: brown;
+	font-size: 23px;
+}
+p {
+	color: darkmagenta;
+	font-size: 28px;
+}
+
+body {
+	align-content: center;
+	text-align: center;
+}

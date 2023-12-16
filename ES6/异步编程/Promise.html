@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        TODO://实例化一个promise对象
+        // promise对象有三种状态
+        // pending(等待) fulfilled(成功) rejected(失败)
+        // promise对象的状态只能从pending转换为fulfilled或者rejected
+        // promise对象的状态一旦转换，就不会再变化
+        // promise对象的状态转换只能由pending转换为fulfilled或者rejected
+        // promise对象的状态转换不受外界影响
+        // promise对象的状态转换只能发生一次
+        // promise对象的状态转换一旦发生，就会立即执行then方法指定的回调函数
+        // promise对象的then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+
+        let p=new Promise((resolve,reject)=>{
+            //resolve:成功时执行的函数
+            //reject:失败时执行的函数
+            //resolve('成功');
+            reject('失败');
+        });
+
+        p.then((data)=>{
+            console.log(data);
+        },(err)=>{
+            console.log(err);
+        });
+
+        console.log('同步任务');
+
+        TODO:
+        //promise对象的then方法可以被多次调用
+        //promise对象的then方法返回一个新的promise对象
+        //promise对象的then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+
+        let p1=new Promise((resolve,reject)=>{
+            resolve('成功');
+        });
+
+        p1.then((data)=>{
+            console.log(data);
+            return '成功';
+        },(err)=>{
+            console.log(err);
+        }).then((data)=>{
+            console.log(data);
+        },(err)=>{
+            console.log(err);
+        });
+
+        TODO:
+        //catch方法用于指定promise对象状态为rejected时的回调函数
+        //catch方法返回一个新的promise对象
+        //catch方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+
+        let p2=new Promise((resolve,reject)=>{
+            reject('失败');
+        });
+
+        p2.then((data)=>{
+            console.log(data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+
+        TODO:
+        //finally方法用于指定promise对象状态为fulfilled或者rejected时的回调函数
+        //finally方法返回一个新的promise对象
+        //finally方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+
+        let p3=new Promise((resolve,reject)=>{
+            resolve('成功');
+        });
+
+        p3.then((data)=>{
+            console.log(data);
+        }).finally(()=>{
+            console.log('finally');
+        });
+
+        let p4=new Promise((resolve,reject)=>{
+            reject('失败');
+        });
+
+        p4.then((data)=>{
+            console.log(data);
+        }).finally(()=>{
+            console.log('finally');
+        });
+
+        TODO:
+        //Promise.resolve方法用于将现有对象转换为promise对象
+        //Promise.resolve方法返回一个新的promise对象
+        //Promise.resolve方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+
+        let p5=Promise.resolve('成功');
+
+        p5.then((data)=>{
+            console.log(data);
+        });
+
+        TODO:
+        //Promise.reject方法用于将现有对象转换为promise对象
+        //Promise.reject方法返回一个新的promise对象
+        //Promise.reject方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+
+        let p6=Promise.reject('失败');
+
+        p6.then((data)=>{
+            console.log(data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+
+        TODO:
+        //Promise.all方法用于将多个promise对象包装成一个新的promise对象(全部成功才返回成功，有一个失败就返回失败)
+        //Promise.all方法返回一个新的promise对象
+        //Promise.all方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+
+        let p7=Promise.resolve('成功');
+        let p8=Promise.resolve('成功');
+        let p9=Promise.resolve('成功');
+
+        Promise.all([p7,p8,p9]).then((data)=>{
+            console.log(data);
+        });
+
+        //Promise.allSettled方法用于将多个promise对象包装成一个新的promise对象
+        //Promise.allSettled方法返回一个新的promise对象
+        //Promise.allSettled方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+
+        let p10=Promise.resolve('成功');
+        let p11=Promise.resolve('成功');
+        let p12=Promise.resolve('成功');
+
+        Promise.allSettled([p10,p11,p12]).then((data)=>{
+            console.log(data);
+        });
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

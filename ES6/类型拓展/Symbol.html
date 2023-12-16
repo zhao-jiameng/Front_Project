@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        TODO: //创建Symbol
+        let s1 = Symbol();
+        let s2 = Symbol('山西工程');
+        let s3 = Symbol('山西工程');
+        console.log(s1,s2,s3);
+        console.log(s2===s3);   //false
+        console.log(s2==s3);    //false
+
+        let s4=Symbol.for('山西工程');
+        let s5=Symbol.for('山西工程');
+        console.log(s4===s5);   //true
+        console.log(s4==s5);    //true
+
+        console.log(s2.toString(),s3.toString());    //Symbol(山西工程) Symbol(山西工程)
+        console.log(typeof s2); //symbol
+        console.log(s2.description) //山西工程
+
+        //Symbol不能与其他类型的值进行运算
+        // console.log(s2+1);  //报错
+
+        //Symbol可以转换为字符串和布尔值
+        console.log(String(s2));    //Symbol(山西工程)
+        console.log(Boolean(s2));   //true
+
+        TODO: Symbol作为属性名
+        let obj = {
+            name:'张三',
+            [s2]:'山西工程大学'
+        }
+        console.log(obj);   //{name: "张三", Symbol(山西工程): "山西工程大学"}
+        console.log(obj[s2]);   //山西工程大学
+
+        //Symbol.for()与Symbol.keyFor()
+        let s6 = Symbol.for('山西工程');
+        console.log(Symbol.keyFor(s6)); //山西工程
+        
+        TODO: 使用Symbol定义常量
+        const COLOR_RED = Symbol('red');
+        const COLOR_GREEN = Symbol('green');
+        function getComplement(color){
+            switch(color){
+                case COLOR_RED:
+                    return COLOR_GREEN;
+                case COLOR_GREEN:
+                    return COLOR_RED;
+                default:
+                    throw new Error('Undefined color');
+            }
+        }
+
+        console.log(getComplement(COLOR_RED));   //Symbol(green)
+        console.log(getComplement(COLOR_GREEN)); //Symbol(red)
+
+        TODO: 向对象添加方法
+        let game={
+            [Symbol('up')]:function(){console.log('up');},
+            [Symbol('down')]:function(){console.log('down');},
+            [Symbol('say')]:()=>console.log('say')
+        };
+        console.log(game);  //{Symbol(up): ƒ, Symbol(down): ƒ, Symbol(say): ƒ}
+        
+        // let game={
+        //     let methods={
+        //         up:Symbol(),
+        //         down:Symbol()
+        //     };
+
+        //     game[methods.up]=function(){console.log('up');},
+        //     game[methods.down]=function(){console.log('down');},
+        //     [Symbol('say')]:()=>console.log('say')
+        // };
+        // let g=game();
+        // g[methods.up]();    //up
+        // g[methods.down]();  //down
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        function main(config){
+            const dbhost=config && config.db && config.db.host;
+            const dbHost = config?.db?.host;    //可选链操作符
+            console.log(dbhost);
+        }
+        mian({
+            db:{
+                host:'localhost',
+                port:3306,
+                username:'root',
+                password:'123456'
+            },
+            cache:{
+                host:'localhost',
+                port:6379,
+                username:'root',
+                password:'123456'
+            }
+            }
+        )
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript</title>
+<script>
+    //对象
+    var obj = new Object();
+    obj.name = "张三";
+
+    console.log(obj.name);
+
+    //字面量创建对象
+    var obj1={
+        uname: 'zhangsan',
+        age: 18,
+        sex: '男',
+        sayHi: function(){
+            console.log("hi");
+        }
+    }
+
+    console.log(obj1.uname);
+    console.log(obj1['age']);
+    obj1.sayHi();
+
+    //构造函数创建对象（首字母大写）
+    function Star(uname,age,sex,music){
+        this.name=uname
+        this.age=age
+        this.sex=sex
+        this.music=function(sing){
+            console.log(uname+'唱'+music);
+            console.log(uname+'唱'+sing);
+        }
+    }
+    var ldh=new Star('刘德华',18,'男','忘情水');
+    ldh.music("冰雨");
+
+    //对象的遍历
+    for(var k in ldh){   //属性名
+        console.log(k);
+        console.log(ldh[k]);
+    }
+
+
+    //内置对象（不需要new）
+    //Math
+    console.log(Math.PI);   //圆周率
+    console.log(Math.abs(-1));    //绝对值
+    console.log(Math.ceil(1.1));    //向上取整
+    console.log(Math.floor(1.9));   //向下取整
+    console.log(Math.round(1.5));   //四舍五入
+    console.log(Math.max(1,2,3,4,5));   //最大值
+    console.log(Math.min(1,2,3,4,5));   //最小值
+    console.log(Math.pow(2,3));    //2的3次方
+    console.log(Math.random());   //0-1随机数
+
+    function getRandom(min,max){    //随机数
+        return Math.floor(Math.random()*(max-min+1))+min;
+    }
+    console.log(getRandom(1,10));
+
+    //Date
+    var date = new Date();      //当前时间
+    var data1=new Date('2022-1-1 12:12:12');    //指定时间
+    console.log(date.getTime());    //时间戳
+    console.log(date.valueOf())     //时间戳
+    var data2=+new Date();      //时间戳
+    console.log(data2);
+
+    //倒计时
+    function countDown(time){
+        var nowTime=+new Date();
+        var inputTime=+new Date(time);
+        var times=(inputTime-nowTime)/1000;
+        var d=parseInt(times/60/60/24);
+        d=d<10?'0'+d:d;
+        var h=parseInt(times/60/60%24);
+        h=h<10?'0'+h:h;
+        var m=parseInt(times/60%60);
+        m=m<10?'0'+m:m;
+        var s=parseInt(times%60);
+        s=s<10?'0'+s:s;
+        return d+'天'+h+'时'+m+'分'+s+'秒';
+    }
+    console.log(countDown('2024-1-1 12:12:12'));
+
+
+    console.log(date.toLocaleString());    //本地时间
+    console.log(date.toLocaleDateString());    //本地日期
+    console.log(date.toLocaleTimeString());    //本地时间
+    console.log(date.toUTCString());    //UTC时间
+    console.log(date.toDateString());    //UTC日期
+    console.log(date.toTimeString());    //UTC时间
+
+    console.log(date.getFullYear());    //年
+    console.log(date.getMonth()+1);    //月
+    console.log(date.getDate());    //日
+    console.log(date.getHours());   //时
+    console.log(date.getMinutes());   //分
+    console.log(date.getSeconds());  //秒
+    console.log(date.getDay());    //星期几
+
+
+
+
+    //数组
+    var arr = new Array(1,2,3,4,5); //数组
+    console.log(arr instanceof Array);  //判断是否是数组
+    console.log(Array.isArray(arr));   //判断是否是数组
+    console.log(arr.length);        //长度
+    console.log(arr[0]);            //第一个
+    console.log(arr.indexOf(2));    //第一次出现的位置
+    console.log(arr.lastIndexOf(2));    //最后一次出现的位置
+    console.log(arr.slice(1,3));    //从第几个开始，截取到第几个
+    console.log(arr.splice(1,3));   //从第几个开始，删除几个
+    console.log(arr.concat(6,7,8)); //连接
+
+    console.log(arr.toString());    //转换字符串
+    console.log(arr.join("-"));     //转换字符串指定分隔符
+
+    console.log(arr.sort());        //排序
+    console.log(arr.reverse());     //倒序
+
+    //数组去重
+    var arr1=[1,2,3,4,5,1,2,3,4,5];
+    var arr2=[];
+    for(var i=0;i<arr1.length;i++){
+        if(arr2.indexOf(arr1[i])==-1){
+            arr2.push(arr1[i]);
+        }
+    }
+    console.log(arr2);
+
+    //添加删除数组元素
+    var arr3=[1,2,3,4,5];
+    arr3.push(6);       //末尾添加(返回长度)
+    arr3.unshift(0);    //开头添加
+    arr3.pop();         //末尾删除（返回删除的元素）
+    arr3.shift();       //开头删除
+    console.log(arr3);
+
+
+    //基本包装类型
+    var str = new String("hello");  //字符串（不可变）
+    console.log(str.length);        //长度
+    console.log(str.indexOf("l"));  //第一次出现的位置
+    console.log(str.indexOf("l"),2);    //从第几个开始，第一次出现的位置
+
+
+    //查找o出现的次数和位置
+    var str1="hello world";
+    var count=0;
+    var pos=str1.indexOf("o");
+    while(pos!=-1){
+        count++;
+        pos=str1.indexOf("o",pos+1);
+    }
+    console.log(count);
+
+    console.log(str.substr(1,3));   //从第几个开始，截取几个    
+    console.log(str.substring(1,3));    //从第几个开始，截取到第几个
+
+    console.log(str.charAt(1));    //第几个字符
+    console.log(str.charCodeAt(1));   //第几个字符的ASCII码
+
+
+    //查找出现最多的字符
+    var str2="hello world";
+    var obj={};
+    for(var i=0;i<str2.length;i++){
+        var char=str2.charAt(i);
+        if(obj[char]){
+            obj[char]++;
+        }else{
+            obj[char]=1;
+        }
+    }
+    var max=0;
+    var maxChar='';
+    for (var k in obj){
+        if(max<obj[k]){
+            max=obj[k];
+            maxChar=k;
+        }
+    }
+    console.log(maxChar,max);
+
+
+    console.log(str.split("l"));    //分割
+    console.log(str.toUpperCase()); //转大写
+    console.log(str.toLowerCase()); //转小写
+
+    console.log(str.replace("l","a"));  //替换(只替换第一个)
+    console.log(str.concat(" world"));  //连接
+    console.log(str.trim());    //去除空格
+
+    var num = new Number(123);  //数字
+    console.log(num.toFixed(2));    //保留小数位
+    console.log(num.toPrecision(2));    //保留有效数字
+    console.log(num.toString());    //转换字符串
+    console.log(num.valueOf());    //转换数字
+
+    var bool = new Boolean(true);   //布尔值
+    console.log(bool.valueOf());    //转换布尔值
+
+    
+
+    var reg = new RegExp("a","i");  //正则
+    console.log(reg.test("abc"));   //是否匹配
+    console.log(reg.exec("abc"));   //匹配的内容 
+
+    var fun = new Function("a","b","return a+b");
+    console.log(fun(1,2));
+
+    var obj = new Object();
+    obj.name = "张三";
+    console.log(obj.name);
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

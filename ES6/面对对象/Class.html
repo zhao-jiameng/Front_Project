@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        //声明一个class类
+        //class类的名称必须以大写字母开头
+        //class类的名称必须使用驼峰命名法
+        //class类的名称后面必须跟着一个大括号
+        //class类的名称后面的大括号中间可以写属性和方法
+        //class类的名称后面的大括号中间不能写逗号
+        //class类的名称后面的大括号中间的属性和方法之间必须使用分号隔开
+
+        class Person{
+            //构造方法
+            // constructor(){
+            //     console.log("我是一个构造方法");
+            // }
+
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+
+            //静态属性(类属性)
+            static name = "赵六";
+            static age = 28;
+
+            //属性(实例属性)
+            name = "张三";
+            age = 18;
+
+            //方法
+            say(){
+                console.log("我是一个人");
+            }
+
+            //方法
+            eat(){
+                console.log("我在吃饭");
+            }
+        }
+
+        //创建一个Person类的实例对象
+        var p = new Person();
+        console.log(p.name);
+        console.log(p.age);
+        p.say();
+        p.eat();
+
+        //创建一个Person类的实例对象
+        var p2 = new Person("李四",20);
+        console.log(p2.name);
+        console.log(p2.age);
+        p2.say();
+        p2.eat();
+
+
+
+        //继承  extends
+        //继承的语法：class 子类名称 extends 父类名称{}
+        //继承的语法：class 子类名称 extends 父类名称{constructor(){super()}}
+        //继承的语法：class 子类名称 extends 父类名称{constructor(){super(参数)}}
+        //继承的语法：class 子类名称 extends 父类名称{constructor(参数){super(参数)}}
+        //继承的语法：class 子类名称 extends 父类名称{constructor(参数){super(参数);this.属性 = 值}}
+        //继承的语法：class 子类名称 extends 父类名称{constructor(参数){super(参数);this.属性 = 值;this.属性 = 值}}
+
+        //父类
+        class Animal{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            #weight = 100;  //私有属性
+            //方法
+            say(){
+                console.log("我是一个动物");
+            }
+        }
+
+        //子类
+        class Dog extends Animal{
+            constructor(name,age,color){
+                super(name,age);
+                this.color = color;
+            }
+            //方法
+            eat(){
+                console.log("我在吃骨头");
+            }
+        }
+
+        //创建一个Dog类的实例对象
+        const d = new Dog('旺财',3,'黑色');
+        console.log(d.name);
+        console.log(d.age);
+        console.log(d.color);
+        d.say();
+        d.eat();
+
+        //geter和seter
+        //geter和seter的语法：class 类名称{get 属性名(){return 值}}
+        //geter和seter的语法：class 类名称{set 属性名(参数){this.属性 = 参数}}
+
+        //父类
+        class Animal2{
+            //属性
+            name = "动物";
+            age = 18;
+            //方法
+            say(){
+                console.log("我是一个动物");
+            }
+            //方法
+            eat(){
+                console.log("我在吃饭");
+            }
+        }
+
+        //子类
+        class Dog2 extends Animal2{
+            //属性
+            color = "黑色";
+            //方法
+            run(){
+                console.log("我在跑步");
+            }
+            //重写方法
+            eat(){
+                console.log("我在吃骨头");
+            }
+            //geter
+            get color2(){
+                console.log('geter'+this.color)
+            }
+            //seter
+            set color2(color){
+                console.log('seter'+color)
+            }
+        }
+
+        //创建一个Dog类的实例对象
+        const d2 = new Dog2();
+        console.log(d2.name);
+        console.log(d2.age);
+        console.log(d2.color);
+        d2.say();
+        d2.eat();
+        d2.run();
+        //调用geter和seter
+        d2.color2;
+        d2.color2="白色";
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

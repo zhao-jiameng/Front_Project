@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        //利用递归实现setTimeout模拟setInterval效果
+        function getTime(){
+            document.querySelector('div').innerHTML=new Date().toLocaleString()
+            setTimeout(getTime,1000)
+        }
+        getTime()
+
+        //利用递归实现拷贝(浅拷贝)
+        const obj={
+            unmame:'zjm',
+            age:18
+
+        }
+        const o={}
+        function deepCopy(o,obj){
+            for(let k in obj){
+                o[k]=obj[k]
+            }
+        }
+
+        //利用递归实现深拷贝
+        const obj1={
+            unmame:'zjm',
+            age:18,
+            book:['read','had'],
+            body:{
+                body:'zzm'
+            }
+        }
+        const o1={}
+        function deepCopy(o,obj){
+            for(let k in obj){
+                //处理数组问题
+                if(obj[k] instanceof Array){
+                    o[k]=[]
+                    deepCopy(o[k],obj[k])
+                }else if(obj[k] instanceof Object){
+                    o[k]={}
+                    deepCopy(o[k],obj[k])
+                }else{
+                    o[k]=obj[k]
+                } 
+            }
+        }
+
+        deepCopy(o1,obj1)
+        console.log(o1)
+        o1.book[0]='put'
+        o1.body.body='zjm'
+        console.log(obj1)
+
+        //使用js库lodash实现深拷贝
+        const o2=_.cloneDeep(obj1)
+
+        //利用JSON实现深拷贝
+        const o3=JSON.parse(JSON.stringify(obj))
+    </script>
+</body>
+</html>

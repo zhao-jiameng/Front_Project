@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <script>
+        //声明一个set对象
+        //set对象的值是唯一的
+        //set对象的值可以是任意类型的值
+        let s=new Set([1,2,3,4,5,6,7,8,9,0,1,2,3,4,5]);
+        console.log(s);
+
+        //set对象的size属性用于获取set对象的值的个数
+        console.log(s.size);
+
+        //set对象的add方法用于向set对象中添加值
+        //set对象的add方法返回一个set对象
+        //set对象的add方法不会向set对象中添加重复的值
+        s.add('10')
+        console.log(s);
+
+        //set对象的delete方法用于删除set对象中的值
+        //set对象的delete方法返回一个布尔值
+        //set对象的delete方法只能删除set对象中的值
+        //set对象的delete方法不能删除set对象中的属性
+        console.log(s.delete(1));
+        console.log(s);
+
+        //set对象的has方法用于判断set对象中是否存在指定的值
+        //set对象的has方法返回一个布尔值
+        console.log(s.has(1));
+
+        //set对象的clear方法用于清空set对象中的值
+        //set对象的clear方法返回一个undefined
+        s.clear();
+        console.log(s);
+
+        //set对象的forEach方法用于遍历set对象中的值
+        //set对象的forEach方法返回一个undefined
+        //set对象的forEach方法的回调函数有三个参数
+        //第一个参数表示set对象中的值
+        //第二个参数表示set对象中的值
+        //第三个参数表示set对象本身
+        let s1=new Set([1,2,3,4,5,6,7,8,9,0]);
+
+        s1.forEach((value,key,set)=>{
+            console.log(value);
+            console.log(key);
+            console.log(set);
+
+        });
+
+        //set对象的entries方法用于遍历set对象中的值
+        //set对象的entries方法返回一个迭代器对象
+        //set对象的entries方法的迭代器对象的next方法返回一个对象
+        //set对象的entries方法的迭代器对象的next方法的对象的value属性表示set对象中的值
+        //set对象的entries方法的迭代器对象的next方法的对象的done属性表示set对象中的值是否遍历完成
+        let s2=new Set([1,2,3,4,5,6,7,8,9,0]);
+
+        let iterator=s2.entries();
+
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next())
+
+        //set对象的values方法用于遍历set对象中的值
+        //set对象的values方法返回一个迭代器对象
+        //set对象的values方法的迭代器对象的next方法返回一个对象
+        //set对象的values方法的迭代器对象的next方法的对象的value属性表示set对象中的值
+        //set对象的values方法的迭代器对象的next方法的对象的done属性表示set对象中的值是否遍历完成
+        let s3=new Set([1,2,3,4,5,6,7,8,9,0]);
+
+        let iterator1=s3.values();
+
+        console.log(iterator1.next());
+        console.log(iterator1.next());
+        console.log(iterator1.next());
+
+        //set对象的keys方法用于遍历set对象中的值
+        //set对象的keys方法返回一个迭代器对象
+        //set对象的keys方法的迭代器对象的next方法返回一个对象
+        //set对象的keys方法的迭代器对象的next方法的对象的value属性表示set对象中的值
+        //set对象的keys方法的迭代器对象的next方法的对象的done属性表示set对象中的值是否遍历完成
+        let s4=new Set([1,2,3,4,5,6,7,8,9,0]);
+
+        let iterator2=s4.keys();
+
+        console.log(iterator2.next());
+        console.log(iterator2.next());
+        console.log(iterator2.next());
+
+        TODO: //数组去重
+        let arr=[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5];
+        let s5=new [...Set(arr)];
+        console.log(s5);
+
+        //交集
+        let s6=new Set([1,2,3,4,5,6,7,8,9,0]);
+        let s7=new Set([1,2,3,4,5,6,7,8,9,0]);
+        let s8=new Set([...s6].filter(item=>s7.has(item)));
+        console.log(s8);
+
+        //差集
+        let s9=new Set([1,2,3,4,5,6,7,8,9,0]);
+        let s10=new Set([1,2,3,4,5,6,7,8,9,0]);
+        let s11=new Set([...s9].filter(item=>!s10.has(item)));
+        console.log(s11);
+
+        //并集
+        let s12=new Set([1,2,3,4,5,6,7,8,9,0]);
+        let s13=new Set([1,2,3,4,5,6,7,8,9,0]);
+        let s14=new Set([...s12,...s13]);
+        console.log(s14);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
